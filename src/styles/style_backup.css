@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+a {
+  color: #283593;
+  text-decoration: none;
+}
+
+h3 {
+  margin-top: 12px;
+}
+
+* {
+  margin: 0px;
+}
+
+body {
+  background-color: #424242;
+  font-family: 'Roboto', sans-serif;
+}
+
+main {
+  border-radius: 5px;
+  background-color: #EF5350;
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: calc((100% - 580px) / 2);
+  width: 550px;
+}
+
+section#status {
+  margin-bottom: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #37474F;
+  color: #FFFFFF;
+  font-size: 25px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+section#slots {
+  border-radius: 15px;
+  background-color: #FAFAFA;
+}
+
+section#spin {
+  margin-top: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #AB47BC;
+  color: #FFFFFF;
+  font-size: 25px;
+}
+
+section#spin:hover {
+  background-color: #BA68C8;
+}
+
+section#options {
+  border-radius: 15px;
+  margin-top: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-radius: 5px;
+  /* text-align: center; */
+  background-color: #FAFAFA;
+  /* color: #FFFFFF; */
+  /* font-size: 25px; */
+}
+
+#slot1, #slot2, #slot3 {
+  display: inline-block;
+  margin-top: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+  background-size: 150px;
+  width: 150px;
+  height: 120px;
+}
+
+.a1 {
+  background-image: url("../assets/reel/3xBAR.png");
+}
+
+.a2 {
+  background-image: url("../assets/reel/BAR.png");
+}
+
+.a3 {
+  background-image: url("../assets/reel/2xBAR.png");
+}
+
+.a4 {
+  background-image: url("../assets/reel/7.png");
+}
+
+.a5 {
+  background-image: url("../assets/reel/Cherry.png");
+}

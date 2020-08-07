@@ -1,11 +1,229 @@
-/* Here are example using css */
-
-.from-css {
-  color: #74FAC8;
+body {
+  margin: 0;
+  padding: 0;
 }
 
+#stage {
+  margin: 0 auto;
+  width: 600px;
+  padding: 0 0 40px;
+}
 
-.img {
-  width: 100%;
-  max-width: 50rem;
+.perspective {
+  -webkit-perspective: 0;
+  -moz-perspective: 0;
+  perspective: 0;
+}
+
+#rotate {
+  margin: 0 auto 0;
+  width: 450px;
+  height: 220px;
+  padding-top: 200px;
+  transform-style: preserve-3d;
+}
+
+.ring {
+  margin: 0 auto;
+  height: 80px;
+  width: 90px;
+  float: left;
+  transform-style: preserve-3d;
+}
+
+.slot {
+  position: absolute;
+  width: 90px;
+  height: 80px;
+  box-sizing: border-box;
+  opacity: 0.9;
+  color: rgba(0, 0, 0, 0.9);
+  background: #fff;
+  border: solid 2px #000;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.slot p {
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 80px;
+  margin: 0;
+  text-align: center;
+}
+
+.go {
+  display: block;
+  margin: 0 auto 20px;
+  padding: 10px 30px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+label {
+  cursor: pointer;
+  display: inline-block;
+  width: 45%;
+  text-align: center;
+}
+
+.spin-0 {
+  transform: rotateX(3600deg);
+}
+
+.spin-1 {
+  transform: rotateX(3636deg);
+}
+
+.spin-2 {
+  transform: rotateX(3672deg);
+}
+
+.spin-3 {
+  transform: rotateX(3708deg);
+}
+
+.spin-4 {
+  transform: rotateX(3744deg);
+}
+
+.spin-5 {
+  transform: rotateX(3780deg);
+}
+
+.spin-6 {
+  transform: rotateX(3816deg);
+}
+
+.spin-7 {
+  transform: rotateX(3852deg);
+}
+
+.spin-8 {
+  transform: rotateX(3888deg);
+}
+
+.spin-9 {
+  transform: rotateX(3924deg);
+}
+
+@keyframes spin-0 {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(3600deg);
+  }
+}
+
+@keyframes spin-1 {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(3636deg);
+  }
+}
+
+@keyframes spin-2 {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(3672deg);
+  }
+}
+
+@keyframes spin-3 {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(3708deg);
+  }
+}
+
+@keyframes spin-4 {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(3744deg);
+  }
+}
+
+@keyframes spin-5 {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(3780deg);
+  }
+}
+
+@keyframes spin-6 {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(3816deg);
+  }
+}
+
+@keyframes spin-7 {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(3852deg);
+  }
+}
+
+@keyframes spin-8 {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(3888deg);
+  }
+}
+
+@keyframes spin-9 {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(3924deg);
+  }
+}
+
+.reelsIcon1 {
+  background-image: url("../assets/reel/3xBAR.png");
+  background-position: center;
+  background-size: contain;
+}
+
+.reelsIcon2 {
+  background-image: url("../assets/reel/BAR.png");
+  background-position: center;
+  background-size: contain;
+}
+
+.reelsIcon3 {
+  background-image: url("../assets/reel/2xBAR.png");
+  background-position: center;
+  background-size: contain;
+}
+
+.reelsIcon4 {
+  background-image: url("../assets/reel/7.png");
+  background-position: center;
+  background-size: contain;
+}
+
+.reelsIcon5 {
+  background-image: url("../assets/reel/Cherry.png");
+  background-position: center;
+  background-size: contain;
 }
