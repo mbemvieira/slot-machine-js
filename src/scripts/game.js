@@ -1,10 +1,9 @@
-import * as combinations from './combinations'
+import { winningCombinations, positions } from './combinations'
 
-const getFinalPosition = () => {
-  // Get the final position of each reel
-}
-
-const checkPontuation = () => {
-  // Calculate the score
-  // Get the category
+export const getFinalPosition = (finalPosition) => {
+  const combinationString =
+    positions[finalPosition[0]]
+    + '+' + positions[finalPosition[1]]
+    + '+' + positions[finalPosition[2]];
+  return winningCombinations[combinationString] || null;
 }
