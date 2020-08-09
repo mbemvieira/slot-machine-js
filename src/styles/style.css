@@ -4,6 +4,10 @@ body {
   padding: 0;
 }
 
+.hide-element {
+  display: none;
+}
+
 .page-container {
   max-width: 800px;
   margin: 0 auto;
@@ -23,6 +27,15 @@ body {
 
 .text-left {
   text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.margin-element {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 #stage {

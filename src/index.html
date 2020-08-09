@@ -36,7 +36,7 @@
           </div>
         </div>
 
-        <div>
+        <div class="margin-element text-center">
           <button type="button" class="nes-btn is-success" id="spin">PLAY!</button>
         </div>
       </div>
@@ -105,20 +105,22 @@
         <div class="nes-field">
           <label for="newBalance" class="text-left">Change Balance</label>
           <input type="number" id="newBalance" class="nes-input">
-          <button type="button" class="nes-btn is-primary" id="btnBalance">Change</button>
+          <button type="button" class="nes-btn is-primary margin-element" id="btnBalance">Change</button>
         </div>
 
-        <label>
-          <input type="radio" class="nes-radio" name="game-mode" checked />
-          <span>Random</span>
-        </label>
+        <div class="margin-element">
+          <label>
+            <input type="radio" class="nes-radio" name="game-mode" id="radio-random" checked />
+            <span>Random</span>
+          </label>
 
-        <label>
-          <input type="radio" class="nes-radio" name="game-mode" />
-          <span>Fixed</span>
-        </label>
+          <label>
+            <input type="radio" class="nes-radio" name="game-mode" id="radio-fixed" />
+            <span>Fixed</span>
+          </label>
+        </div>
 
-        <div id="fixed-options-container">
+        <div id="fixed-options-container" class="hide-element">
           <div class="fixed-options">
             <label for="select-reel1" class="text-left">Reel 1</label>
             <div class="nes-select">

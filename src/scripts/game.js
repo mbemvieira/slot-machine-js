@@ -9,13 +9,3 @@ export const getFinalPosition = (finalPosition) => {
     + '+' + positions[finalPosition[2]];
   return winningCombinations[combinationString] || null;
 }
-
-export const gameMode = () => {
-  const radioButtons = document.getElementsByName('game-mode');
-
-  if (radioButtons.length > 0 && radioButtons[1] != null) {
-    return radioButtons[1].checked ? GAME_MODE_FIXED : GAME_MODE_RANDOM;
-  } else {
-    return GAME_MODE_RANDOM;
-  }
-}

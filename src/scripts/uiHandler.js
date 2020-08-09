@@ -3,17 +3,24 @@ import * as game from './game';
 
 let coins = utils.INITIAL_COINS;
 let running = false;
+let gameMode = game.GAME_MODE_FIXED;
 
 export const start = () => {
   createSlots(document.getElementById('reel1'));
   createSlots(document.getElementById('reel2'));
-  const reel3 = document.getElementById('reel3');
-  createSlots(reel3);
 
+  const reel3 = document.getElementById('reel3');
+
+  createSlots(reel3);
   reel3.addEventListener('animationend', resultHandler);
+
   document.getElementById('spin').addEventListener('click', () => spin(2));
+
   document.getElementById('btnBalance').addEventListener('click', setBalanceManually);
   setBalanceText(coins);
+
+  document.getElementById('radio-random').addEventListener('change', handleRadioRandom);
+  document.getElementById('radio-fixed').addEventListener('change', handleRadioFixed);
 };
 
 const createSlots = (reel) => {
@@ -36,7 +43,6 @@ const createSlots = (reel) => {
 const spin = (timer) => {
   if (coins <= 0 || running) return;
 
-  const gameMode = game.gameMode();
   let reelElement = null;
 
   resetPrize();
@@ -73,7 +79,6 @@ const resultHandler = () => {
 };
 
 const displayWinningPrize = (result) => {
-  console.log('result', result);
   if (result == null) return;
 
   const prizeElement = document.getElementById(`prize-${result.category}`);
@@ -145,3 +150,23 @@ const subtractFromBalance = (value) => {
     setBalanceText(coins);
   }
 };
+
+const handleRadioRandom = () => {
+  gameMode = game.GAME_MODE_RANDOM;
+  showOptionsContainer(false);
+}
+
+const handleRadioFixed = () => {
+  gameMode = game.GAME_MODE_FIXED;
+  showOptionsContainer(true);
+}
+
+const showOptionsContainer = (showOptions) => {
+  const optionsContainer = document.getElementById('fixed-options-container');
+
+  if (!!showOptions) {
+    optionsContainer.removeAttribute('class');
+  } else {
+    optionsContainer.setAttribute('class', 'hide-element');
+  }
+}
