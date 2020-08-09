@@ -2,6 +2,7 @@ import * as utils from './utils';
 import * as game from './game';
 
 let coins = utils.INITIAL_COINS;
+let running = false;
 
 export const start = () => {
   createSlots(document.getElementById('reel1'));
@@ -20,28 +21,25 @@ const createSlots = (reel) => {
 
   for (let i = 0; i < utils.SLOTS_PER_REEL; i++) {
     const slot = document.createElement('div');
-
     slot.className = 'slot reelsIcon' + (i+1);
-
-    // slot.className = 'slot';
     slot.style.transform = `rotateX(${slotAngle * (-i)}deg) translateZ(${utils.REEL_RADIUS}px)`;
 
+    // slot.className = 'slot';
     // const childP = document.createElement('p');
     // childP.innerHTML = i + 1;
-
     // slot.appendChild(childP);
+
     reel.append(slot);
   }
 }
 
 const spin = (timer) => {
+  if (coins <= 0 || running) return;
+
   const gameMode = game.gameMode();
   let reelElement = null;
 
   resetPrize();
-
-  if (coins <= 0) return;
-
   subtractFromBalance(1);
 
   for (let i = 0; i < utils.SLOTS_NUMBER; i++) {
@@ -49,19 +47,30 @@ const spin = (timer) => {
     const oldPosition = parseInt(reelElement.className.slice(11));
     let position = null;
 
-    if (gameMode == game.GAME_MODE_RANDOM) {
-      position = utils.getSeed();
-      while (oldPosition == position) position = utils.getSeed();
-    } else {
+    if (gameMode == game.GAME_MODE_FIXED) {
       position = document.getElementById(`select-reel${i + 1}`).value;
+    } else {
+      position = utils.getSeed();
     }
 
     reelElement.style.animation = `spin-${position} ${timer + i * 0.5}s`;
     reelElement.setAttribute('class', `reels spin-${position}`);
   }
+
+  running = true;
 }
 
-const resultHandler = () => displayWinningPrize(game.getFinalPosition(getReelsPositions()));
+const resultHandler = () => {
+  let reelElement = null;
+  running = false;
+
+  for (let i = 0; i < utils.SLOTS_NUMBER; i++) {
+    reelElement = document.getElementById(`reel${i + 1}`);
+    reelElement.style.animation = 'none';
+  }
+
+  displayWinningPrize(game.getFinalPosition(getReelsPositions()))
+};
 
 const displayWinningPrize = (result) => {
   console.log('result', result);
