@@ -9,36 +9,171 @@
 </head>
 
 <body>
-  <main>
-    <section id="status">
-      <div>BALANCE: 1000</div>
-      <div>
-        <input type="number" name="balance" id="newBalance" />
-        <button id="btnBalance">Change</button>
+  <main class="page-container">
+    <section class="page-section">
+      <div class="nes-container with-title">
+        <p class="title">Welcome!</p>
+        <p>Simply click the "PLAY!" button to start playing. Good luck!</p>
       </div>
     </section>
 
-    <!-- <section id="slots">
-      <div id="slot1" class="a1"></div>
-      <div id="slot2" class="a1"></div>
-      <div id="slot3" class="a1"></div>
-    </section> -->
+    <section class="page-section">
+      <div class="nes-container with-title">
+        <p class="title">Let's Play!</p>
 
-    <div id="stage" class="perspective">
-      <div id="rotate">
-        <div id="reel1" class="reels spin-0"></div>
-        <div id="reel2" class="reels spin-0"></div>
-        <div id="reel3" class="reels spin-0"></div>
+        <div>
+          <span class="nes-text is-primary" id="balance">
+            BALANCE: 0
+          </span>
+          x <i class="nes-icon coin is-small"></i>
+        </div>
+
+        <div id="stage" class="perspective">
+          <div id="rotate">
+            <div id="reel1" class="reels spin-0"></div>
+            <div id="reel2" class="reels spin-0"></div>
+            <div id="reel3" class="reels spin-0"></div>
+          </div>
+        </div>
+
+        <div>
+          <button type="button" class="nes-btn is-success" id="spin">PLAY!</button>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <section id="spin">PLAY!</section>
+    <section class="page-section">
+      <div class="nes-container with-title">
+        <p class="title">Pay Table</p>
 
-    <section id="options">
-      <ul>
-        <li>Random</li>
-        <li>Fixed</li>
-      </ul>
+        <div class="lists">
+          <ul class="nes-list is-circle">
+            <li id="prize-3_cherry_bottom">
+              <span id="amount-3_cherry_bottom">[4000]</span> x
+              <i class="nes-icon coin is-small"></i>
+              : 3 CHERRY symbols on bottom line
+            </li>
+            <li id="prize-3_cherry_top">
+              <span id="amount-3_cherry_top">[2000]</span> x
+              <i class="nes-icon coin is-small"></i>
+              : 3 CHERRY symbols on top line
+            </li>
+            <li id="prize-3_cherry_center">
+              <span id="amount-3_cherry_center">[1000]</span> x
+              <i class="nes-icon coin is-small"></i>
+              : 3 CHERRY symbols on center line
+            </li>
+            <li id="prize-3_seven_any">
+              <span id="amount-3_seven_any">[_150]</span> x
+              <i class="nes-icon coin is-small"></i>
+              : 3 7 symbols on any line
+            </li>
+            <li id="prize-3_cherry_seven_any">
+              <span id="amount-3_cherry_seven_any">[__75]</span> x
+              <i class="nes-icon coin is-small"></i>
+              : Any combination of CHERRY and 7 on any line
+            </li>
+            <li id="prize-3_3xbar_any">
+              <span id="amount-3_3xbar_any">[__50]</span> x
+              <i class="nes-icon coin is-small"></i>
+              : 3 3xBAR symbols on any line
+            </li>
+            <li id="prize-3_2xbar_any">
+              <span id="amount-3_2xbar_any">[__20]</span> x
+              <i class="nes-icon coin is-small"></i>
+              : 3 2xBAR symbols on any line
+            </li>
+            <li id="prize-3_bar_any">
+              <span id="amount-3_bar_any">[__10]</span> x
+              <i class="nes-icon coin is-small"></i>
+              : 3 BAR symbols on any line
+            </li>
+            <li id="prize-any_bar">
+              <span id="amount-any_bar">[___5]</span> x
+              <i class="nes-icon coin is-small"></i>
+              : Combination of any BAR symbols on any line
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="nes-container with-title">
+        <p class="title">Debug</p>
+
+        <div class="nes-field">
+          <label for="newBalance" class="text-left">Change Balance</label>
+          <input type="number" id="newBalance" class="nes-input">
+          <button type="button" class="nes-btn is-primary" id="btnBalance">Change</button>
+        </div>
+
+        <label>
+          <input type="radio" class="nes-radio" name="game-mode" checked />
+          <span>Random</span>
+        </label>
+
+        <label>
+          <input type="radio" class="nes-radio" name="game-mode" />
+          <span>Fixed</span>
+        </label>
+
+        <div id="fixed-options-container">
+          <div class="fixed-options">
+            <label for="select-reel1" class="text-left">Reel 1</label>
+            <div class="nes-select">
+              <select required id="select-reel1">
+                <option value="0">3xBar</option>
+                <option value="1">3xBar / Bar</option>
+                <option value="2">Bar</option>
+                <option value="3">Bar / 2xBar</option>
+                <option value="4">2xBar</option>
+                <option value="5">2xBar / Seven</option>
+                <option value="6">Seven</option>
+                <option value="7">Seven / Cherry</option>
+                <option value="8">Cherry</option>
+                <option value="9">Cherry / 3xBar</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="fixed-options">
+            <label for="select-reel2" class="text-left">Reel 2</label>
+            <div class="nes-select">
+              <select required id="select-reel2">
+                <option value="0">3xBar</option>
+                <option value="1">3xBar / Bar</option>
+                <option value="2">Bar</option>
+                <option value="3">Bar / 2xBar</option>
+                <option value="4">2xBar</option>
+                <option value="5">2xBar / Seven</option>
+                <option value="6">Seven</option>
+                <option value="7">Seven / Cherry</option>
+                <option value="8">Cherry</option>
+                <option value="9">Cherry / 3xBar</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="fixed-options">
+            <label for="select-reel3" class="text-left">Reel 3</label>
+            <div class="nes-select">
+              <select required id="select-reel3">
+                <option value="0">3xBar</option>
+                <option value="1">3xBar / Bar</option>
+                <option value="2">Bar</option>
+                <option value="3">Bar / 2xBar</option>
+                <option value="4">2xBar</option>
+                <option value="5">2xBar / Seven</option>
+                <option value="6">Seven</option>
+                <option value="7">Seven / Cherry</option>
+                <option value="8">Cherry</option>
+                <option value="9">Cherry / 3xBar</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 </body>

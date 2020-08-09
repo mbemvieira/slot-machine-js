@@ -1,3 +1,4 @@
+import 'nes.css/css/nes.min.css';
 import './styles/style.css';
 import * as ui from './scripts/uiHandler';
 

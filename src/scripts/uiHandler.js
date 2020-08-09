@@ -6,10 +6,13 @@ let coins = utils.INITIAL_COINS;
 export const start = () => {
   createSlots(document.getElementById('reel1'));
   createSlots(document.getElementById('reel2'));
-  createSlots(document.getElementById('reel3'));
+  const reel3 = document.getElementById('reel3');
+  createSlots(reel3);
 
+  reel3.addEventListener('animationend', resultHandler);
   document.getElementById('spin').addEventListener('click', () => spin(2));
-  document.getElementById('btnBalance').addEventListener('click', setInitialBalance);
+  document.getElementById('btnBalance').addEventListener('click', setBalanceManually);
+  setBalanceText(coins);
 };
 
 const createSlots = (reel) => {
@@ -18,7 +21,6 @@ const createSlots = (reel) => {
   for (let i = 0; i < utils.SLOTS_PER_REEL; i++) {
     const slot = document.createElement('div');
 
-    // TODO: Images
     slot.className = 'slot reelsIcon' + (i+1);
 
     // slot.className = 'slot';
@@ -33,25 +35,62 @@ const createSlots = (reel) => {
 }
 
 const spin = (timer) => {
+  const gameMode = game.gameMode();
+  let reelElement = null;
+
+  resetPrize();
+
+  if (coins <= 0) return;
+
+  subtractFromBalance(1);
+
   for (let i = 0; i < utils.SLOTS_NUMBER; i++) {
-    const reelElement = document.getElementById(`reel${i + 1}`);
-    const oldClass = reelElement.className;
-    const oldSeed = parseInt(oldClass.slice(11));
-    let seed = utils.getSeed();
+    reelElement = document.getElementById(`reel${i + 1}`);
+    const oldPosition = parseInt(reelElement.className.slice(11));
+    let position = null;
 
-    while (oldSeed == seed) seed = utils.getSeed();
+    if (gameMode == game.GAME_MODE_RANDOM) {
+      position = utils.getSeed();
+      while (oldPosition == position) position = utils.getSeed();
+    } else {
+      position = document.getElementById(`select-reel${i + 1}`).value;
+    }
 
-    reelElement.style.animation = `spin-${seed} ${timer + i * 0.5}s`;
-    reelElement.setAttribute('class', `reels spin-${seed}`);
+    reelElement.style.animation = `spin-${position} ${timer + i * 0.5}s`;
+    reelElement.setAttribute('class', `reels spin-${position}`);
+  }
+}
+
+const resultHandler = () => displayWinningPrize(game.getFinalPosition(getReelsPositions()));
+
+const displayWinningPrize = (result) => {
+  console.log('result', result);
+  if (result == null) return;
+
+  const prizeElement = document.getElementById(`prize-${result.category}`);
+  const amountElement = document.getElementById(`amount-${result.category}`);
+
+  prizeElement.setAttribute('class', 'highlightPrize');
+  amountElement.setAttribute('class', 'blinking');
+
+  addToBalance(result.amount);
+}
+
+const resetPrize = () => {
+  const prizeElements = document.getElementsByClassName('highlightPrize');
+  const amountElements = document.getElementsByClassName('blinking');
+
+  if (prizeElements.length > 0) {
+    for (let i = 0; i < prizeElements.length; i++) {
+      prizeElements[i].removeAttribute('class');
+    }
   }
 
-  setTimeout(() => {
-    const positions = getReelsPositions();
-    console.log('positions', positions);
-
-    const result = game.getFinalPosition(positions);
-    console.log('result', result);
-  }, 5000)
+  if (amountElements.length > 0) {
+    for (let i = 0; i < amountElements.length; i++) {
+      amountElements[i].removeAttribute('class');
+    }
+  }
 }
 
 const getReelsPositions = () => {
@@ -62,20 +101,38 @@ const getReelsPositions = () => {
   ];
 }
 
-const setInitialBalance = () => {
-  const value = setBalanceValue(
-    parseInt(document.getElementById('newBalance').value)
-  );
-
-  let status = document.getElementById("status");
-  status.firstElementChild.innerHTML = `BALANCE: ${value}`
+const setBalanceText = (value) => {
+  document.getElementById('balance').innerHTML = `BALANCE: ${value}`;
 };
 
-const setBalanceValue = (value) => {
+const setBalanceManually = () => {
+  const value = parseInt(
+    document.getElementById('newBalance').value
+  );
+
   if (Number.isInteger(value)) {
     coins = (value > 5000 || value <= 0) ? 1000 : value;
-    return coins;
+  } else {
+    coins = 0;
   }
 
-  return 0;
+  setBalanceText(coins);
+};
+
+const addToBalance = (value) => {
+  const amount = parseInt(value);
+
+  if (Number.isInteger(amount)) {
+    coins += amount;
+    setBalanceText(coins);
+  }
+};
+
+const subtractFromBalance = (value) => {
+  const amount = parseInt(value);
+
+  if (Number.isInteger(amount)) {
+    coins = amount <= coins ? (coins - amount) : 0;
+    setBalanceText(coins);
+  }
 };

@@ -1,6 +1,28 @@
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
 body {
   margin: 0;
   padding: 0;
+}
+
+.page-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-section {
+  margin: 50px 0;
+}
+
+#fixed-options-container {
+  margin-top: 40px;
+}
+
+.fixed-options {
+  margin-bottom: 40px;
+}
+
+.text-left {
+  text-align: left;
 }
 
 #stage {
@@ -226,4 +248,32 @@ label {
   background-image: url("../assets/reel/Cherry.png");
   background-position: center;
   background-size: contain;
+}
+
+.blinking {
+  animation: blinkingText 1.2s infinite;
+}
+
+.highlightPrize {
+  border-bottom: #FFD700 6px solid;
+  border-top: #FFD700 6px solid;
+  border-radius: 20px;
+}
+
+@keyframes blinkingText {
+  0% {
+    color: #000;
+  }
+  49% {
+    color: #000;
+  }
+  60% {
+    color: transparent;
+  }
+  99% {
+    color: transparent;
+  }
+  100% {
+    color: #000;
+  }
 }
