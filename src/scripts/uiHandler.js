@@ -3,7 +3,7 @@ import * as game from './game';
 
 let coins = utils.INITIAL_COINS;
 let running = false;
-let gameMode = game.GAME_MODE_FIXED;
+let gameMode = game.GAME_MODE_RANDOM;
 
 export const start = () => {
   createSlots(document.getElementById('reel1'));
@@ -30,11 +30,6 @@ const createSlots = (reel) => {
     const slot = document.createElement('div');
     slot.className = 'slot reelsIcon' + (i+1);
     slot.style.transform = `rotateX(${slotAngle * (-i)}deg) translateZ(${utils.REEL_RADIUS}px)`;
-
-    // slot.className = 'slot';
-    // const childP = document.createElement('p');
-    // childP.innerHTML = i + 1;
-    // slot.appendChild(childP);
 
     reel.append(slot);
   }

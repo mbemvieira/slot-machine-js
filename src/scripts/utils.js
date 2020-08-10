@@ -2,7 +2,7 @@ export const SLOTS_PER_REEL = 5;
 export const SLOTS_NUMBER = 3;
 /**
  * Calculate radius using the following formula:
- * Math.round((panelWidth / 2) / Math.tan(Math.PI / SLOTS_PER_REEL));
+ * Math.round((panelHeight / 2) / Math.tan(Math.PI / SLOTS_PER_REEL));
  */
 export const REEL_RADIUS = 55;
 export const INITIAL_COINS = 100;

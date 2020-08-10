@@ -38,23 +38,15 @@ body {
   margin-bottom: 30px;
 }
 
-#stage {
+#slot-machine-container {
   margin: 0 auto;
-  width: 600px;
-  padding: 0 0 40px;
 }
 
-.perspective {
-  -webkit-perspective: 0;
-  -moz-perspective: 0;
-  perspective: 0;
-}
-
-#rotate {
+#slot-machine {
   margin: 0 auto 0;
-  width: 450px;
+  width: 270px;
   height: 220px;
-  padding-top: 200px;
+  padding-top: 70px;
   transform-style: preserve-3d;
 }
 
@@ -78,29 +70,6 @@ body {
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   backface-visibility: hidden;
-}
-
-.slot p {
-  font-size: 36px;
-  font-weight: bold;
-  line-height: 80px;
-  margin: 0;
-  text-align: center;
-}
-
-.go {
-  display: block;
-  margin: 0 auto 20px;
-  padding: 10px 30px;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-label {
-  cursor: pointer;
-  display: inline-block;
-  width: 45%;
-  text-align: center;
 }
 
 .spin-0 {
@@ -263,14 +232,14 @@ label {
   background-size: contain;
 }
 
-.blinking {
-  animation: blinkingText 1.2s infinite;
-}
-
 .highlightPrize {
   border-bottom: #FFD700 6px solid;
   border-top: #FFD700 6px solid;
   border-radius: 20px;
+}
+
+.blinking {
+  animation: blinkingText 1.2s infinite;
 }
 
 @keyframes blinkingText {
