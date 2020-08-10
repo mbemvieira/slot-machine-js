@@ -1,6 +1,6 @@
 # slot-machine-js
 
-Make sure you have NodeJS and NPM installed.
+Make sure you have a newer version of NPM installed before proceding. For this project, I used pure ES6 and [NES.css](https://nostalgic-css.github.io/NES.css) library for some basic styles.
 
 ## Project setup
 ```
@@ -9,18 +9,10 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm start
 ```
 
 ### Compiles and minifies for production
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
